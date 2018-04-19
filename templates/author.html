@@ -1,0 +1,29 @@
+{% if author == '' %}
+
+<h2> Input the author name to filter design pricinples! </h2>
+
+{% else %}
+
+<h2> Design Principles by {{author}} </h2>
+
+{% endif %}
+
+<form action="/author" method="POST">
+	Author: <input type="text" name="author">
+
+	<input type="submit" name="submit">
+</form>
+
+<table>
+
+<tr>
+	<th>Design Principles Heading</th>
+	<th>Author</th>
+</tr>
+{% for item in my_list %}
+<tr>
+	<td><a href="{{item[1]}}">{{item[0]}}</td>
+	<td>{{item[2]}}</td>
+</tr>
+{% endfor %}
+</table>
