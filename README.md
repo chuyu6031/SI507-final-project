@@ -13,26 +13,26 @@ All principles’ title, author, source and details are crawled using Beautiful 
 There isn't any other API keys or client secrets needed to obtain the data from this website.
 
 ## Required Module
-Please install all modules listed in **requirements.txt** to run the program successfully.
+Please install all modules listed in *requirements.txt* to run the program successfully.
 
 ## Code Structure
-- data crawling and database established: final_project_data.py
-- key functions to process data: model.py
+- data crawling and database established: *final_project_data.py*
+- key functions to process data: *model.py*
   - find_principle_by_author
   - find_principle_by_keyword
-- uniitest of database and key functions: final_project_test.py
-- flask: app.py, templates, and static
+- uniitest of database and key functions: *final_project_test.py*
+- flask: *app.py, templates, and static*
 
 ## User Guide
-1. Make sure you already install all modules in **requirements.txt**.
+1. Make sure you already install all modules in *requirements.txt*.
 2. Open your terminal and go to the correct directory.
-3. Run **app.py** in terminal.
-4. You will see these lines after successfulling running **app.py** file.
+3. Run *app.py* in terminal.
+4. You will see these lines after successfulling running *app.py* file.
 
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
  * Restarting with stat
  * Debugger is active!
  * Debugger PIN: 324-859-096
  
-5. Copy the url and paste it into your browser.
+5. Copy the url(http://127.0.0.1:5000/) and paste it into your browser.
 6. Enjoy design principles!
