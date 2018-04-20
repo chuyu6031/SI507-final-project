@@ -113,6 +113,7 @@ def get_data_from_web(url,p_list):
 	return p_list
 
 
+# cache
 if len(all_p) == 0:
 	for i in range(3):
 		page_num = i+1
@@ -126,7 +127,6 @@ if len(all_p) == 0:
 
 
 # author table
-
 author_list = []
 
 for principle in all_p:
