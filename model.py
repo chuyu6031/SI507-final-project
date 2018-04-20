@@ -1,5 +1,10 @@
 import sqlite3
 from flask import Flask, render_template, request
+import plotly
+import plotly.graph_objs as go
+import plotly.offline as offline
+
+
 
 # connect to database
 DBNAME = 'design.db'
@@ -13,7 +18,7 @@ def find_principle_by_author(author='', DBNAE='design.db'):
 	cur = conn.cursor()
 	
 	author_find = '''
-		SELECT p.Heading, p.SourceURL, a.AuthorName
+		SELECT p.Heading, p.SourceURL, p.SourceText, a.AuthorName, p.Id
 		FROM Principle AS p
 			JOIN Author AS a
 			ON a.Id = p.AuthorId
@@ -48,7 +53,24 @@ def find_principle_by_keyword(keyword='',DBNAME='design.db'):
 	return p_result.fetchall()
 
 
-# find principle by headingId
+# find principle heading by headingId
+def find_heading_by_headingId(p_id='',DBNAME='design.db'):
+	conn = sqlite3.connect(DBNAME)
+	cur = conn.cursor()
+
+	heading = '''
+		SELECT Heading
+		FROM Principle
+		WHERE Id = ?
+	'''
+
+	params = (p_id, )
+	p_result = cur.execute(heading, params)
+	return p_result.fetchone()
+
+
+
+# find principle content by headingId
 def find_principle_by_headingId(p_id='',DBNAME='design.db'):
 	conn = sqlite3.connect(DBNAME)
 	cur = conn.cursor()
@@ -65,4 +87,41 @@ def find_principle_by_headingId(p_id='',DBNAME='design.db'):
 
 
 
+# plot the numbers of author using plotly
+
+def author_plotly(DBNAME='design.db'):
+	conn = sqlite3.connect(DBNAME)
+	cur = conn.cursor()
+
+	all_title = '''
+		SELECT AuthorName, Count(AuthorName)
+		FROM Author
+			JOIN Principle
+			ON Principle.AuthorId = Author.Id
+		GROUP BY AuthorName
+		ORDER BY Count(AuthorName) DESC
+		'''
+
+	title = cur.execute(all_title)
+	titles = title.fetchall()
+
+	x_list = []
+	y_list = []
+
+	for item in titles:
+		x_list.append(item[0])
+		y_list.append(item[1])
+
+	data = [go.Bar(
+	            x=x_list[:10],
+	            y=y_list[:10]
+	    )]
+
+	layout = go.Layout(
+	    title = 'The number of authors in Design Principles FTW',
+	    xaxis = dict(title="Author Name"),
+	    yaxis = dict(title="number"))
+
+	fig = go.Figure(data=data, layout=layout)
+	offline.plot(fig)
 

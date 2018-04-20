@@ -1,15 +1,24 @@
 {% if keyword == '' %}
 
+<a href="/">Back To Homepage</a>
+<a href="/author">Search By Author</a>
+<hr>
+
 <h2> Start Searching for relevant design principles by inputting a keyword! </h2>
 
+
 {% else %}
+
+<a href="/">Back To Homepage</a>
+<a href="/author">Search By Author</a>
+<hr>
 
 <h2> Design Principles relevant to {{keyword}} </h2>
 
 {% endif %}
 
 <form action="/keyword" method="POST">
-	Author: <input type="text" name="keyword">
+	Keyword: <input type="text" name="keyword">
 
 	<input type="submit" name="submit">
 </form>
@@ -32,6 +41,11 @@
 	<td>{{item[0]}}</td>
 	<td>{{item[2]}}</td>
 	<td>{{item[4]}}</td>
+	<td>
+		<form action='/list/{{item[1]}}' method="POST">
+			<button type='submit'>Read More</button>
+		</form>
+	</td>
 </tr>
 {% endfor %}
 </table>
