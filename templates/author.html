@@ -4,6 +4,9 @@
 <!-- Nav Bar -->
 <nav>
 	<a href="/">Back To Homepage</a>
+	<a>|</a>
+	<a href="/author">Search By Author</a>
+	<a>|</a>
 	<a href="/keyword">Search By Keyword</a>
 </nav>
 <hr>
@@ -25,6 +28,21 @@
 <br>
 
 <!-- Principle Tables -->
+{% if my_list == [] %}
+<table>
+<tr>
+	<th>Design Principles Heading</th>
+	<th>Author</th>
+	<th>Source</th>
+	<th> </th>
+</tr>
+</table>
+
+<br>
+<div>Your search did not match any design principles.</div>
+
+
+{% else %}
 <table>
 <tr>
 	<th>Design Principles Heading</th>
@@ -45,3 +63,5 @@
 </tr>
 {% endfor %}
 </table>
+
+{% endif %}

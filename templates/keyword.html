@@ -4,13 +4,16 @@
 <!-- Nav Bar -->
 <nav>
 	<a href="/">Back To Homepage</a>
+	<a>|</a>
 	<a href="/author">Search By Author</a>
+	<a>|</a>
+	<a href="/keyword">Search By Keyword</a>
 </nav>
 <hr>
 
 <!-- Heading -->
 {% if keyword == '' %}
-<h2>Start Searching for relevant design principles by inputting a keyword</h2>
+<h2>Start Searching for relevant design principles by inputting a keyword!</h2>
 
 {% else %}
 <h2>Design Principles relevant to {{keyword}}</h2>

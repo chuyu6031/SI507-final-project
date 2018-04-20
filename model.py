@@ -124,4 +124,3 @@ def author_plotly(DBNAME='design.db'):
 
 	fig = go.Figure(data=data, layout=layout)
 	offline.plot(fig)
-
