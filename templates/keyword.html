@@ -30,29 +30,52 @@
 
 
 <!-- Principle Result -->
+
 {% if keyword == '' %}
 <br>
 
 {% else %}
-<table>
-<tr>
-	<th>Principle</th>
-	<th>Sources</th>
-	<th>Author</th>
-	<th> </th>
-</tr>
-{% for item in my_list %}
-<tr>
-	<td>{{item[0]}}</td>
-	<td>{{item[2]}}</td>
-	<td>{{item[4]}}</td>
-	<td>
-		<form action='/list/{{item[1]}}' method="POST">
-			<button type='submit'>Read More</button>
-		</form>
-	</td>
-</tr>
-{% endfor %}
-</table>
+
+<!-- No searching result -->
+	{% if my_list == [] %}
+	<table>
+	<tr>
+		<th>Principle</th>
+		<th>Sources</th>
+		<th>Author</th>
+		<th> </th>
+	</tr>
+	</table>
+
+	<br>
+	<div>Your search did not match any design principles.</div>
+
+<!-- Present searching result -->
+	{% else %}
+
+	<table>
+		<tr>
+			<th>Principle</th>
+			<th>Sources</th>
+			<th>Author</th>
+			<th> </th>
+		</tr>
+
+	{% for item in my_list %}
+		<tr>
+			<td>{{item[0]}}</td>
+			<td>{{item[2]}}</td>
+			<td>{{item[4]}}</td>
+			<td>
+				<form action='/list/{{item[1]}}' method="POST">
+					<button type='submit'>Read More</button>
+				</form>
+			</td>
+		</tr>
+	{% endfor %}
+	
+	</table>
+
+	{% endif %}
 
 {% endif %}
