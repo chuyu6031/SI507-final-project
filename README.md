@@ -1,7 +1,7 @@
 # SI507-final-project
 
 ## Brief Intro
-This program includes 99 design principles written by various companies or authors.
+This is a database including 99 design principles written by various companies or authors.
 The data was crawled from the source listed below, organized and put into SQLite and presented using flask.
 The users can filter/search for different principles using author name or keywords.
 
