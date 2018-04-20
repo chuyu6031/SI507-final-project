@@ -1,33 +1,36 @@
-{% if author == '' %}
+<link rel="stylesheet" type="text/css"
+    href="{{ url_for('static', filename='style.css') }}"/>
 
-<a href="/">Back To Homepage</a>
-<a href="/keyword">Search By Keyword</a>
+<!-- Nav Bar -->
+<nav>
+	<a href="/">Back To Homepage</a>
+	<a href="/keyword">Search By Keyword</a>
+</nav>
 <hr>
 
-<h2> Input the author name to filter design pricinples! </h2>
+<!-- Heading -->
+{% if author == '' %}
+<h2>Input the author name to filter design pricinples!</h2>
 
 {% else %}
-
-<a href="/">Back To Homepage</a>
-<a href="/keyword">Search By Keyword</a>
-<hr>
-
-<h2> Design Principles by {{author}} </h2>
+<h2>Design Principles by {{author}}</h2>
 
 {% endif %}
 
+<!-- Input Field -->
 <form action="/author" method="POST">
 	Author: <input type="text" name="author">
-
-	<input type="submit" name="submit">
+	<button type='submit'>Search</button>
 </form>
+<br>
 
+<!-- Principle Tables -->
 <table>
-
 <tr>
 	<th>Design Principles Heading</th>
 	<th>Author</th>
 	<th>Source</th>
+	<th> </th>
 </tr>
 {% for item in my_list %}
 <tr>

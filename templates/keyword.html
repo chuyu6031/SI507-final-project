@@ -1,40 +1,42 @@
-{% if keyword == '' %}
+<link rel="stylesheet" type="text/css"
+    href="{{ url_for('static', filename='style.css') }}"/>
 
-<a href="/">Back To Homepage</a>
-<a href="/author">Search By Author</a>
+<!-- Nav Bar -->
+<nav>
+	<a href="/">Back To Homepage</a>
+	<a href="/author">Search By Author</a>
+</nav>
 <hr>
 
-<h2> Start Searching for relevant design principles by inputting a keyword! </h2>
-
+<!-- Heading -->
+{% if keyword == '' %}
+<h2>Start Searching for relevant design principles by inputting a keyword</h2>
 
 {% else %}
-
-<a href="/">Back To Homepage</a>
-<a href="/author">Search By Author</a>
-<hr>
-
-<h2> Design Principles relevant to {{keyword}} </h2>
+<h2>Design Principles relevant to {{keyword}}</h2>
 
 {% endif %}
 
+<!-- Input Field -->
 <form action="/keyword" method="POST">
 	Keyword: <input type="text" name="keyword">
 
-	<input type="submit" name="submit">
+	<button type='submit'>Search</button>
 </form>
+<br>
 
+
+<!-- Principle Result -->
 {% if keyword == '' %}
-
 <br>
 
 {% else %}
-
 <table>
-
 <tr>
 	<th>Principle</th>
 	<th>Sources</th>
 	<th>Author</th>
+	<th> </th>
 </tr>
 {% for item in my_list %}
 <tr>

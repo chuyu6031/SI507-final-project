@@ -1,6 +1,17 @@
-<h1>Welcome!</h1>
+<link rel="stylesheet" type="text/css"
+    href="{{ url_for('static', filename='style.css') }}"/>
 
-<ol>
+	
+<h1>Welcome!</h1>
+<p>There are 99 design principles from various companies or authors in this database.</p>
+<p>You can search principles by author or by keywords.</p>
+<p>Also, you can take a look at the plotly figure indicating the numbers of authors writing these principles.</p>
+
+<hr>
+
+<ul>
 	<li><a href="/author">Search Principles By Author</a></li>	
 	<li><a href="/keyword">Search Principles By Keyword</a></li>
-</ol>
+	<li><a href="/plotly">Plotly - The number of authors in Design Principles FTW</a></li>
+</ul>
+

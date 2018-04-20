@@ -1,10 +1,27 @@
+<link rel="stylesheet" type="text/css"
+    href="{{ url_for('static', filename='style.css') }}"/>
 
-<h1>{{heading[0]}}</h1>
+<!-- Nav Bar -->
+<nav>
+	<a href="/">Back To Homepage</a>
+	<a href="/author">Search By Author</a>
+	<a href="/keyword">Search By Keyword</a>
+</nav>
+<hr>
 
+<!-- Heading -->
+<h2>{{heading[0]}}</h2>
 
-<ol>
-	{% for item in my_list %}
-	<li><h4>{{item[0]}}</h4></li>
-	<p>{{item[1]}}</p>
-	{% endfor %}
-</ol>
+<!-- Principle Lists -->
+<table>
+<tr>
+	<th class="title">Principle Title</th>
+	<th>Contents</th>
+</tr>
+{% for item in my_list %}
+<tr>
+	<td>{{item[0]}}</td>
+	<td>{{item[1]}}</td>
+</tr>
+{% endfor %}
+</table>
